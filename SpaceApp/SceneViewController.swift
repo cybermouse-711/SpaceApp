@@ -22,15 +22,7 @@ class SceneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        sceneView.delegate = self
-        sceneView.showsStatistics = true
-        sceneView.automaticallyUpdatesLighting = true
-        
-        //Вспомогательные точки поверхности и ось координат
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
-        
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
-        sceneView.scene = scene
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +37,31 @@ class SceneViewController: UIViewController {
         sceneView.session.pause()
     }
 
+}
+
+// MARK: - Setup View
+private extension SceneViewController {
+    
+    func setupView() {
+        setupSceneView()
+    }
+
+}
+
+// MARK: - Setup UI
+private extension SceneViewController {
+    
+    func setupSceneView() {
+        sceneView.delegate = self
+        sceneView.showsStatistics = true
+        sceneView.automaticallyUpdatesLighting = true
+        
+        //Вспомогательные точки поверхности и ось координат
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        
+        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        sceneView.scene = scene
+    }
 }
 
 // MARK: - ARSCNViewDelegate
@@ -70,5 +87,4 @@ extension SceneViewController: ARSCNViewDelegate {
         guard plane != nil else { return }
         plane?.update(anchor: anchor as! ARPlaneAnchor)
     }
-    
 }
