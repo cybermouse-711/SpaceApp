@@ -24,12 +24,15 @@ final class Sphere: SCNNode {
     
     // MARK: Private Metods
     private func configure() {
-        let sphereGeometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 1)
+        let sphereGeometry = SCNSphere(radius: 0.1)
         
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.gray
+        material.diffuse.contents = UIImage(named: "moon.jpg")
         sphereGeometry.materials = [material]
         
         self.geometry = sphereGeometry
+        
+//        let physicsShape = SCNPhysicsShape(geometry: self.geometry!, options: nil)
+//        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: physicsShape)
     }
 }
