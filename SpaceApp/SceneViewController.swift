@@ -36,7 +36,6 @@ class SceneViewController: UIViewController {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
-
 }
 
 // MARK: - Setup View
@@ -44,23 +43,53 @@ private extension SceneViewController {
     
     func setupView() {
         setupSceneView()
+        setupTapGestures()
     }
-
 }
 
 // MARK: - Setup UI
 private extension SceneViewController {
     
+    //MARK: Setting Scene View
     func setupSceneView() {
         sceneView.delegate = self
         sceneView.showsStatistics = true
-        sceneView.automaticallyUpdatesLighting = true
+        sceneView.autoenablesDefaultLighting = true
         
         //Вспомогательные точки поверхности и ось координат
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
         sceneView.scene = scene
+    }
+    
+    //MARK: Setting Tap Gesture
+    func setupTapGestures() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(placeSphere))
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func placeSphere(tapGesture: UITapGestureRecognizer) {
+        guard let sceneView = tapGesture.view as? ARSCNView else { return }
+        let location = tapGesture.location(in: sceneView)
+        
+        let hitTestResult = sceneView.hitTest(location)
+        guard let hitResult = hitTestResult.first else { return }
+        
+        createSphere(hitResult: hitResult)
+                
+    }
+    
+    func createSphere(hitResult: SCNHitTestResult) {
+        let position = SCNVector3(
+            hitResult.worldCoordinates.x,
+            hitResult.worldCoordinates.y,
+            hitResult.worldCoordinates.z
+        )
+        
+        let sphere = Sphere(atPosition: position)
+        sceneView.scene.rootNode.addChildNode(sphere)
     }
 }
 
