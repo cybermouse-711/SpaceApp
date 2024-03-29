@@ -9,16 +9,25 @@ import UIKit
 import SceneKit
 import ARKit
 
-class SceneViewController: UIViewController, ARSCNViewDelegate {
-
+// MARK: - SceneViewController
+class SceneViewController: UIViewController {
+    
+    // MARK: IBOutlets
     @IBOutlet var sceneView: ARSCNView!
     
+    // MARK: Private Properties
+    private var planes = [Plane]()
+    
+    // MARK: Override Metods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         sceneView.delegate = self
         sceneView.showsStatistics = true
         sceneView.automaticallyUpdatesLighting = true
+        
+        //Вспомогательные точки поверхности и ось координат
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
         sceneView.scene = scene
@@ -27,6 +36,7 @@ class SceneViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = .horizontal
         sceneView.session.run(configuration)
     }
     
@@ -35,7 +45,30 @@ class SceneViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
 
-    // MARK: - ARSCNViewDelegate
-    
+}
 
+// MARK: - ARSCNViewDelegate
+extension SceneViewController: ARSCNViewDelegate {
+    
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard anchor is ARPlaneAnchor else {
+            print("Якоря определены не для поверхности")
+            return
+        }
+        // FIXME: - Убрать !
+        let plane = Plane(anchor: anchor as! ARPlaneAnchor)
+        self.planes.append(plane)
+        node.addChildNode(plane)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        let plane = self.planes.filter { plane in
+            return plane.anchor.identifier == anchor.identifier
+        }.first
+        
+        // FIXME: - Убрать !
+        guard plane != nil else { return }
+        plane?.update(anchor: anchor as! ARPlaneAnchor)
+    }
+    
 }
