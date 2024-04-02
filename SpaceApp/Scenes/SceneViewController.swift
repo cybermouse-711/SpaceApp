@@ -62,6 +62,8 @@ private extension SceneViewController {
         
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
         sceneView.scene = scene
+        
+        sceneView.scene.physicsWorld.contactDelegate = self
     }
     
     //MARK: Setting Tap Gesture
@@ -116,5 +118,12 @@ extension SceneViewController: ARSCNViewDelegate {
         // FIXME: - Убрать !
         guard plane != nil else { return }
         plane?.update(anchor: anchor as! ARPlaneAnchor)
+    }
+}
+
+// MARK: - SCNPhysicsContactDelegate
+extension SceneViewController: SCNPhysicsContactDelegate {
+    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
+        
     }
 }
