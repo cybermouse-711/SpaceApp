@@ -64,14 +64,38 @@
 				C660C9CF2BB1C7DB001D3052 /* AppDelegate.swift */,
 				C60DAF652BB759A3003B32D6 /* moon.jpg */,
 				C660C9D12BB1C7DB001D3052 /* art.scnassets */,
-				C660C9D32BB1C7DB001D3052 /* SceneViewController.swift */,
-				C660C9E22BB5E609001D3052 /* Sphere.swift */,
-				C660C9E42BB5E86A001D3052 /* Plane.swift */,
-				C660C9D52BB1C7DB001D3052 /* Main.storyboard */,
+				C6D926FD2BBC536700B52BE4 /* Scenes */,
+				C6D926FC2BBC533600B52BE4 /* Objects */,
+				C6D926FE2BBC537900B52BE4 /* Storiboards */,
 				C660C9D82BB1C7DC001D3052 /* Assets.xcassets */,
-				C660C9DA2BB1C7DC001D3052 /* LaunchScreen.storyboard */,
 			);
 			path = SpaceApp;
+			sourceTree = "<group>";
+		};
+		C6D926FC2BBC533600B52BE4 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				C660C9E22BB5E609001D3052 /* Sphere.swift */,
+				C660C9E42BB5E86A001D3052 /* Plane.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		C6D926FD2BBC536700B52BE4 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C660C9D32BB1C7DB001D3052 /* SceneViewController.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		C6D926FE2BBC537900B52BE4 /* Storiboards */ = {
+			isa = PBXGroup;
+			children = (
+				C660C9D52BB1C7DB001D3052 /* Main.storyboard */,
+				C660C9DA2BB1C7DC001D3052 /* LaunchScreen.storyboard */,
+			);
+			path = Storiboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

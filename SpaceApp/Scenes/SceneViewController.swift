@@ -57,7 +57,8 @@ private extension SceneViewController {
         sceneView.autoenablesDefaultLighting = true
         
         //Вспомогательные точки поверхности и ось координат
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+                                  //ARSCNDebugOptions.showWorldOrigin]
         
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
         sceneView.scene = scene
@@ -84,7 +85,7 @@ private extension SceneViewController {
     func createSphere(hitResult: SCNHitTestResult) {
         let position = SCNVector3(
             hitResult.worldCoordinates.x,
-            hitResult.worldCoordinates.y,
+            hitResult.worldCoordinates.y + 0.05,
             hitResult.worldCoordinates.z
         )
         
