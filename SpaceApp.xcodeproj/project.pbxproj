@@ -17,6 +17,7 @@
 		C660C9E32BB5E609001D3052 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = C660C9E22BB5E609001D3052 /* Sphere.swift */; };
 		C660C9E52BB5E86A001D3052 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = C660C9E42BB5E86A001D3052 /* Plane.swift */; };
 		C6D927002BBC540600B52BE4 /* BitMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D926FF2BBC540600B52BE4 /* BitMask.swift */; };
+		C6D927022BBC999C00B52BE4 /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D927012BBC999C00B52BE4 /* VirtualObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		C660C9E22BB5E609001D3052 /* Sphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
 		C660C9E42BB5E86A001D3052 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		C6D926FF2BBC540600B52BE4 /* BitMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMask.swift; sourceTree = "<group>"; };
+		C6D927012BBC999C00B52BE4 /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +70,8 @@
 				C660C9D12BB1C7DB001D3052 /* art.scnassets */,
 				C6D926FD2BBC536700B52BE4 /* Scenes */,
 				C6D926FC2BBC533600B52BE4 /* Objects */,
-				C6D926FF2BBC540600B52BE4 /* BitMask.swift */,
 				C6D926FE2BBC537900B52BE4 /* Storiboards */,
+				C6D927032BBC99A500B52BE4 /* Servises */,
 				C660C9D82BB1C7DC001D3052 /* Assets.xcassets */,
 			);
 			path = SpaceApp;
@@ -99,6 +101,15 @@
 				C660C9DA2BB1C7DC001D3052 /* LaunchScreen.storyboard */,
 			);
 			path = Storiboards;
+			sourceTree = "<group>";
+		};
+		C6D927032BBC99A500B52BE4 /* Servises */ = {
+			isa = PBXGroup;
+			children = (
+				C6D927012BBC999C00B52BE4 /* VirtualObject.swift */,
+				C6D926FF2BBC540600B52BE4 /* BitMask.swift */,
+			);
+			path = Servises;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +187,7 @@
 			files = (
 				C6D927002BBC540600B52BE4 /* BitMask.swift in Sources */,
 				C660C9D42BB1C7DB001D3052 /* SceneViewController.swift in Sources */,
+				C6D927022BBC999C00B52BE4 /* VirtualObject.swift in Sources */,
 				C660C9D02BB1C7DB001D3052 /* AppDelegate.swift in Sources */,
 				C660C9E52BB5E86A001D3052 /* Plane.swift in Sources */,
 				C660C9E32BB5E609001D3052 /* Sphere.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - BitMask
 struct BitMask {
     static let none = 0 << 0
     static let sphere = 1 << 0
