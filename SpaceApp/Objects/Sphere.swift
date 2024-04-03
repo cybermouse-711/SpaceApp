@@ -32,10 +32,10 @@ final class Sphere: SCNNode {
         
         self.geometry = sphereGeometry
         
-        let physicsShape = SCNPhysicsShape(geometry: self.geometry!, options: nil)
-        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: physicsShape)
-        self.physicsBody?.categoryBitMask = BitMask.sphere
-        self.physicsBody?.collisionBitMask = BitMask.sphere | BitMask.plane
-        self.physicsBody?.contactTestBitMask = BitMask.sphere
+//        let physicsShape = SCNPhysicsShape(geometry: self.geometry!, options: nil)
+//        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: physicsShape)
+//        self.physicsBody?.categoryBitMask = BitMask.sphere
+//        self.physicsBody?.collisionBitMask = BitMask.sphere | BitMask.plane
+//        self.physicsBody?.contactTestBitMask = BitMask.sphere
     }
 }

@@ -12,4 +12,5 @@ struct BitMask {
     static let none = 0 << 0
     static let sphere = 1 << 0
     static let plane = 1 << 1 
+    static let ufo = 1 << 2
 }

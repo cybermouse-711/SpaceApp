@@ -41,11 +41,11 @@ final class Plane: SCNNode {
         self.position = SCNVector3(anchor.center.x, 0, anchor.center.z)
         self.transform = SCNMatrix4MakeRotation(Float(-Double.pi / 2), 1.0, 0.0, 0.0)
         
-        let physicsShape = SCNPhysicsShape(geometry: self.geometry!, options: nil)
-        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: physicsShape)
-        self.physicsBody?.categoryBitMask = BitMask.plane
-        self.physicsBody?.collisionBitMask = BitMask.sphere
-        self.physicsBody?.contactTestBitMask = BitMask.sphere
+//        let physicsShape = SCNPhysicsShape(geometry: self.geometry!, options: nil)
+//        self.physicsBody = SCNPhysicsBody(type: .dynamic, shape: physicsShape)
+//        self.physicsBody?.categoryBitMask = BitMask.plane
+//        self.physicsBody?.collisionBitMask = BitMask.sphere
+//        self.physicsBody?.contactTestBitMask = BitMask.sphere
     }
     
     // MARK: Public Metods
