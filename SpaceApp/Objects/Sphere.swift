@@ -24,7 +24,7 @@ final class Sphere: SCNNode {
     
     // MARK: Private Metods
     private func configure() {
-        let sphereGeometry = SCNSphere(radius: 0.1)
+        let sphereGeometry = SCNSphere(radius: SizeSphere.point.rawValue)
         
         let material = SCNMaterial()
         material.diffuse.contents = UIImage(named: "moon.jpg")
@@ -38,4 +38,8 @@ final class Sphere: SCNNode {
 //        self.physicsBody?.collisionBitMask = BitMask.sphere | BitMask.plane
 //        self.physicsBody?.contactTestBitMask = BitMask.sphere
     }
+}
+
+enum SizeSphere: CGFloat {
+    case point = 0.3
 }

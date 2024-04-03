@@ -102,9 +102,9 @@ private extension SceneViewController {
     //MARK: Setting Objects
     func createSphere(hitResult: SCNHitTestResult) {
         let position = SCNVector3(
-            hitResult.worldCoordinates.x,
-            hitResult.worldCoordinates.y + 0.05,
-            hitResult.worldCoordinates.z
+            hitResult.worldCoordinates.x - (size() / 2),
+            hitResult.worldCoordinates.y + (size() / 2) + 0.1,
+            hitResult.worldCoordinates.z + (size() / 2)
         )
         
         let sphere = Sphere(atPosition: position)
@@ -113,8 +113,8 @@ private extension SceneViewController {
     
     func createVirtualObject(hitResult: SCNHitTestResult) {
         let position = SCNVector3(
-            hitResult.worldCoordinates.x,
-            hitResult.worldCoordinates.y + 0.1 + 0.05 + 0.05,
+            hitResult.worldCoordinates.x ,
+            hitResult.worldCoordinates.y + size() + 0.4,
             hitResult.worldCoordinates.z
         )
         
@@ -122,6 +122,11 @@ private extension SceneViewController {
         virtualObject.position = position
         virtualObject.load()
         sceneView.scene.rootNode.addChildNode(virtualObject)
+    }
+    
+    //MARK: Helpers Metods
+    func size() -> Float {
+        Float(SizeSphere.point.rawValue)
     }
 }
 
@@ -156,3 +161,5 @@ extension SceneViewController: SCNPhysicsContactDelegate {
         
     }
 }
+
+
