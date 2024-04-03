@@ -56,13 +56,10 @@ private extension SceneViewController {
         sceneView.autoenablesDefaultLighting = true
         
         //Вспомогательные точки поверхности и ось координат
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
-                                  //ARSCNDebugOptions.showWorldOrigin]
+//        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
         let scene = SCNScene()
         sceneView.scene = scene
-        
-        sceneView.scene.physicsWorld.contactDelegate = self
     }
     
     //MARK: Setting Tap Gestures
@@ -114,13 +111,19 @@ private extension SceneViewController {
     func createVirtualObject(hitResult: SCNHitTestResult) {
         let position = SCNVector3(
             hitResult.worldCoordinates.x ,
-            hitResult.worldCoordinates.y + size() + 0.4,
+            hitResult.worldCoordinates.y + size() + 0.1,
             hitResult.worldCoordinates.z
         )
         
         let virtualObject = VirtualObject.availableObjects[1]
         virtualObject.position = position
         virtualObject.load()
+        
+        if let particleSystem = SCNParticleSystem(named: "Fire.scnp", inDirectory: nil), let smokeNode = virtualObject.childNode(withName: "FireNode", recursively: true) {
+            
+            smokeNode.addParticleSystem(particleSystem)
+        }
+       
         sceneView.scene.rootNode.addChildNode(virtualObject)
     }
     
@@ -134,12 +137,10 @@ private extension SceneViewController {
 extension SceneViewController: ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard anchor is ARPlaneAnchor else {
-            print("Якоря определены не для поверхности")
-            return
-        }
+        guard anchor is ARPlaneAnchor else { return }
         // FIXME: - Убрать !
         let plane = Plane(anchor: anchor as! ARPlaneAnchor)
+        print("Plane is detected and created")
         self.planes.append(plane)
         node.addChildNode(plane)
     }
@@ -152,13 +153,6 @@ extension SceneViewController: ARSCNViewDelegate {
         // FIXME: - Убрать !
         guard plane != nil else { return }
         plane?.update(anchor: anchor as! ARPlaneAnchor)
-    }
-}
-
-// MARK: - SCNPhysicsContactDelegate
-extension SceneViewController: SCNPhysicsContactDelegate {
-    func physicsWorld(_ world: SCNPhysicsWorld, didBegin contact: SCNPhysicsContact) {
-        
     }
 }
 

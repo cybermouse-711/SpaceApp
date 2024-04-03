@@ -15,9 +15,10 @@
 		C660C9D92BB1C7DC001D3052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C660C9D82BB1C7DC001D3052 /* Assets.xcassets */; };
 		C660C9DC2BB1C7DC001D3052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C660C9DA2BB1C7DC001D3052 /* LaunchScreen.storyboard */; };
 		C660C9E32BB5E609001D3052 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = C660C9E22BB5E609001D3052 /* Sphere.swift */; };
-		C660C9E52BB5E86A001D3052 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = C660C9E42BB5E86A001D3052 /* Plane.swift */; };
 		C6D927002BBC540600B52BE4 /* BitMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D926FF2BBC540600B52BE4 /* BitMask.swift */; };
 		C6D927022BBC999C00B52BE4 /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D927012BBC999C00B52BE4 /* VirtualObject.swift */; };
+		C6ECA0452BBDEDAE00210BB3 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ECA0442BBDEDAE00210BB3 /* Plane.swift */; };
+		C6ECA04C2BBDF7E800210BB3 /* Fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = C6ECA04B2BBDF7E800210BB3 /* Fire.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,9 +31,10 @@
 		C660C9D82BB1C7DC001D3052 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C660C9DB2BB1C7DC001D3052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C660C9E22BB5E609001D3052 /* Sphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
-		C660C9E42BB5E86A001D3052 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
 		C6D926FF2BBC540600B52BE4 /* BitMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitMask.swift; sourceTree = "<group>"; };
 		C6D927012BBC999C00B52BE4 /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
+		C6ECA0442BBDEDAE00210BB3 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		C6ECA04B2BBDF7E800210BB3 /* Fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Fire.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				C660C9CF2BB1C7DB001D3052 /* AppDelegate.swift */,
+				C6ECA04B2BBDF7E800210BB3 /* Fire.sks */,
 				C60DAF652BB759A3003B32D6 /* moon.jpg */,
 				C660C9D12BB1C7DB001D3052 /* art.scnassets */,
 				C6D926FD2BBC536700B52BE4 /* Scenes */,
@@ -80,8 +83,8 @@
 		C6D926FC2BBC533600B52BE4 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				C6ECA0442BBDEDAE00210BB3 /* Plane.swift */,
 				C660C9E22BB5E609001D3052 /* Sphere.swift */,
-				C660C9E42BB5E86A001D3052 /* Plane.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				C660C9D22BB1C7DB001D3052 /* art.scnassets in Resources */,
 				C60DAF662BB759A3003B32D6 /* moon.jpg in Resources */,
 				C660C9DC2BB1C7DC001D3052 /* LaunchScreen.storyboard in Resources */,
+				C6ECA04C2BBDF7E800210BB3 /* Fire.sks in Resources */,
 				C660C9D92BB1C7DC001D3052 /* Assets.xcassets in Resources */,
 				C660C9D72BB1C7DB001D3052 /* Main.storyboard in Resources */,
 			);
@@ -189,7 +193,7 @@
 				C660C9D42BB1C7DB001D3052 /* SceneViewController.swift in Sources */,
 				C6D927022BBC999C00B52BE4 /* VirtualObject.swift in Sources */,
 				C660C9D02BB1C7DB001D3052 /* AppDelegate.swift in Sources */,
-				C660C9E52BB5E86A001D3052 /* Plane.swift in Sources */,
+				C6ECA0452BBDEDAE00210BB3 /* Plane.swift in Sources */,
 				C660C9E32BB5E609001D3052 /* Sphere.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

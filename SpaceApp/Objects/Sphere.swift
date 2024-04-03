@@ -41,5 +41,5 @@ final class Sphere: SCNNode {
 }
 
 enum SizeSphere: CGFloat {
-    case point = 0.3
+    case point = 0.2
 }

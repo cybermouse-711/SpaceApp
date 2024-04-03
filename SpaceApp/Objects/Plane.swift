@@ -33,7 +33,7 @@ final class Plane: SCNNode {
         self.planeGeometry = SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))
         
         let material = SCNMaterial()
-        material.diffuse.contents = UIColor.red
+        material.diffuse.contents = UIColor.clear
         self.planeGeometry.materials = [material]
         
         self.geometry = planeGeometry
