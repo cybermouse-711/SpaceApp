@@ -59,7 +59,7 @@ private extension SceneViewController {
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
                                   //ARSCNDebugOptions.showWorldOrigin]
         
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene()
         sceneView.scene = scene
         
         sceneView.scene.physicsWorld.contactDelegate = self
@@ -114,7 +114,7 @@ private extension SceneViewController {
     func createVirtualObject(hitResult: SCNHitTestResult) {
         let position = SCNVector3(
             hitResult.worldCoordinates.x,
-            hitResult.worldCoordinates.y + 0.1 + 0.05 + 0.1,
+            hitResult.worldCoordinates.y + 0.1 + 0.05 + 0.05,
             hitResult.worldCoordinates.z
         )
         
