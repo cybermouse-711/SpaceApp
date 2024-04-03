@@ -10,7 +10,7 @@ import SceneKit
 import ARKit
 
 // MARK: - SceneViewController
-class SceneViewController: UIViewController {
+final class SceneViewController: UIViewController {
     
     // MARK: IBOutlets
     @IBOutlet var sceneView: ARSCNView!
@@ -21,7 +21,6 @@ class SceneViewController: UIViewController {
     // MARK: Override Metods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupView()
     }
     
@@ -66,13 +65,20 @@ private extension SceneViewController {
         sceneView.scene.physicsWorld.contactDelegate = self
     }
     
-    //MARK: Setting Tap Gesture
+    //MARK: Setting Tap Gestures
     func setupTapGestures() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(placeSphere))
         tapGestureRecognizer.numberOfTapsRequired = 1
         self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(placeUFO))
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        self.sceneView.addGestureRecognizer(doubleTapGestureRecognizer)
+        
+        tapGestureRecognizer.require(toFail: doubleTapGestureRecognizer)
     }
     
+    //MARK: @objc Metods
     @objc func placeSphere(tapGesture: UITapGestureRecognizer) {
         guard let sceneView = tapGesture.view as? ARSCNView else { return }
         let location = tapGesture.location(in: sceneView)
@@ -81,9 +87,19 @@ private extension SceneViewController {
         guard let hitResult = hitTestResult.first else { return }
         
         createSphere(hitResult: hitResult)
-                
     }
     
+    @objc func placeUFO(tapGesture: UITapGestureRecognizer) {
+        guard let sceneView = tapGesture.view as? ARSCNView else { return }
+        let location = tapGesture.location(in: sceneView)
+        
+        let hitTestResult = sceneView.hitTest(location)
+        guard let hitResult = hitTestResult.first else { return }
+        
+        createVirtualObject(hitResult: hitResult)
+    }
+    
+    //MARK: Setting Objects
     func createSphere(hitResult: SCNHitTestResult) {
         let position = SCNVector3(
             hitResult.worldCoordinates.x,
@@ -93,6 +109,19 @@ private extension SceneViewController {
         
         let sphere = Sphere(atPosition: position)
         sceneView.scene.rootNode.addChildNode(sphere)
+    }
+    
+    func createVirtualObject(hitResult: SCNHitTestResult) {
+        let position = SCNVector3(
+            hitResult.worldCoordinates.x,
+            hitResult.worldCoordinates.y + 0.1 + 0.05 + 0.1,
+            hitResult.worldCoordinates.z
+        )
+        
+        let virtualObject = VirtualObject.availableObjects[1]
+        virtualObject.position = position
+        virtualObject.load()
+        sceneView.scene.rootNode.addChildNode(virtualObject)
     }
 }
 
